@@ -1,16 +1,20 @@
 package com.example.lythuyet;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Switch;
 
 public class MainActivity extends AppCompatActivity {
-
+    ViewPager viewPager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,17 +24,20 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView bottomnav = findViewById(R.id.bottom_nav);
         bottomnav.setOnNavigationItemSelectedListener(navSelect);
         getSupportFragmentManager().beginTransaction().replace(R.id.frament_layout, new trangchu_class()).commit();
-
+        viewPager=findViewById(R.id.view_paper);
     }
+
     private BottomNavigationView.OnNavigationItemSelectedListener navSelect =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+
                     Fragment selectedFrag = null;
                     switch(menuItem.getItemId())
                     {
                         case R.id.thuonghieu: {
                             selectedFrag = new thuonghieu_class();
+
                             break;
                         }
                         case R.id.theodoi: {
